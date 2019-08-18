@@ -51,6 +51,8 @@ export declare type manifestType = {
     supportsGlTextures: string[];
     application: applicationType;
     package: string;
+    versionCode: string;
+    versionName: string;
 };
 export declare type applicationType = {
     label: string;
