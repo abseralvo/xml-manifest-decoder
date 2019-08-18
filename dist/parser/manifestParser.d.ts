@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { docNode, manifestType, applicationType, activityType } from './types';
+import { docNode, manifestType, applicationType, activityType } from './binaryxml';
 declare class ManifestParser {
     private readonly buffer;
     private xmlParser;

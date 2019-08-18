@@ -1,5 +1,106 @@
 /// <reference types="node" />
-import { typedType, dimensionType, attributeNode, docNode, chunkHeaderType } from './types';
+export declare type typedType = {
+    value: number | string | boolean | dimensionType | typedType | null;
+    type: string | null;
+    rawType: number | null;
+};
+export declare type dimensionType = {
+    value: number | null;
+    unit: string | null;
+    rawUnit: number | null;
+};
+export declare type attributeNode = {
+    name?: string | null;
+    namespaceURI: string | null;
+    nodeName: string | null;
+    nodeType: number;
+    typedValue: typedType | null;
+    value?: string | null;
+};
+export declare type docNode = {
+    attributes?: attributeNode[];
+    childNodes?: docNode[];
+    namespaceURI: string | null;
+    nodeName: string | null;
+    nodeType: number | null;
+    data?: string[] | null;
+    typedValue?: typedType | null;
+};
+export declare type chunkHeaderType = {
+    chunkType: number;
+    startOffset: number;
+    chunkSize: number;
+    headerSize: number;
+    stringCount?: number;
+    styleCount?: number;
+    flags?: number;
+    stringsStart?: number;
+    stylesStart?: number;
+};
+export declare type manifestType = {
+    usesPermissions: string[];
+    permissions: string[];
+    permissionTrees: string[];
+    permissionGroups: string[];
+    instrumentation: string | null;
+    usesSdk: string | null;
+    usesConfiguration: string | null;
+    usesFeatures: string[];
+    supportsScreens: string | null;
+    compatibleScreens: string[];
+    supportsGlTextures: string[];
+    application: applicationType;
+};
+export declare type applicationType = {
+    label: string;
+    icon: string;
+    name: string;
+    debuggable: boolean;
+    allowBackup: boolean;
+    supportsRtl: boolean;
+    roundIcon: string;
+    appComponentFactory: string;
+    activities: activityType[];
+    activityAliases: string[];
+    launcherActivities: launcherActivitiesType[];
+    services: servicesAndReceiversType[];
+    receivers: servicesAndReceiversType[];
+    providers: string[];
+    usesLibraries: string[];
+};
+export declare type activityType = {
+    theme: string;
+    name: string;
+    windowSoftInputMode: number;
+    intentFilters: intentFiltersType[];
+    metaData: metaDataType[];
+};
+export declare type intentFiltersType = {
+    actions: {
+        name: string;
+    }[];
+    categories: {
+        name: string;
+    }[];
+    data: {
+        name: string;
+    }[];
+};
+export declare type launcherActivitiesType = {
+    theme: string;
+    name: string;
+    intentFilters: intentFiltersType[];
+    metaData: metaDataType[];
+};
+export declare type metaDataType = {
+    [k: string]: string;
+};
+export declare type servicesAndReceiversType = {
+    name: string;
+    exported: boolean;
+    intentFilters: intentFiltersType[];
+    metaData: metaDataType[];
+};
 declare class BinaryXmlParser {
     private readonly buffer;
     private cursor;
