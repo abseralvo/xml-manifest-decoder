@@ -50,6 +50,7 @@ export declare type manifestType = {
     compatibleScreens: string[];
     supportsGlTextures: string[];
     application: applicationType;
+    package: string;
 };
 export declare type applicationType = {
     label: string;
