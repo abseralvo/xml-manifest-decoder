@@ -1,6 +1,6 @@
 {
   "name": "xml-manifest-decoder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Decode AndroidManifest.xml file from a NodeJs Buffer to JSON",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
