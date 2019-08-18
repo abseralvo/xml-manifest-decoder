@@ -1,0 +1,29 @@
+{
+  "name": "xml-manifest-decoder",
+  "version": "1.0.0",
+  "description": "Decode AndroidManifest.xml file from a NodeJs Buffer to JSON",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abseralvo/xml-manifest-decoder.git"
+  },
+  "keywords": [
+    "androidmanifest.xml",
+    "manifest",
+    "apk-reader",
+    "alanben",
+    "manifest-decoder"
+  ],
+  "author": "Alan Ben Seralvo",
+  "license": "ISC",
+  "homepage": "https://github.com/abseralvo/xml-manifest-decoder#readme",
+  "dependencies": {
+    "@types/node": "^12.7.2",
+    "assert": "^2.0.0"
+  }
+}
