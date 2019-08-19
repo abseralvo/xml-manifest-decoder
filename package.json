@@ -24,7 +24,8 @@
   "homepage": "https://github.com/abseralvo/xml-manifest-decoder#readme",
   "dependencies": {
     "@types/node": "^12.7.2",
-    "assert": "^2.0.0"
+    "assert": "^2.0.0",
+    "jszip": "^3.2.2"
   },
   "devDependencies": {
     "tslint": "^5.18.0",

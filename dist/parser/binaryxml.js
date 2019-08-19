@@ -273,8 +273,7 @@ var BinaryXmlParser = /** @class */ (function () {
                 stringLength = this.readLength8();
                 byteLength = this.readLength8();
                 value = this.buffer.toString(encoding, this.cursor, (this.cursor += byteLength));
-                console.log("// assert.equal(this.readU8(), 0, 'String must end with trailing zero');", this.readU8());
-                // assert.equal(this.readU8(), 0, 'String must end with trailing zero');
+                assert.equal(this.readU8(), 0, 'String must end with trailing zero');
                 return value;
             case 'ucs2':
                 stringLength = this.readLength16();
