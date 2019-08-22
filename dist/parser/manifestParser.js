@@ -21,23 +21,23 @@ var ManifestParser = /** @class */ (function () {
         var _this = this;
         target.intentFilters = [];
         target.metaData = [];
-        return element.childNodes.forEach(function (element) {
-            switch (element.nodeName) {
+        return element.childNodes.forEach(function (el) {
+            switch (el.nodeName) {
                 case 'intent-filter': {
-                    var intentFilter_1 = _this.collapseAttributes(element);
+                    var intentFilter_1 = _this.collapseAttributes(el);
                     intentFilter_1.actions = [];
                     intentFilter_1.categories = [];
                     intentFilter_1.data = [];
-                    element.childNodes.forEach(function (element) {
-                        switch (element.nodeName) {
+                    el.childNodes.forEach(function (e) {
+                        switch (e.nodeName) {
                             case 'action':
-                                intentFilter_1.actions.push(_this.collapseAttributes(element));
+                                intentFilter_1.actions.push(_this.collapseAttributes(e));
                                 break;
                             case 'category':
-                                intentFilter_1.categories.push(_this.collapseAttributes(element));
+                                intentFilter_1.categories.push(_this.collapseAttributes(e));
                                 break;
                             case 'data':
-                                intentFilter_1.data.push(_this.collapseAttributes(element));
+                                intentFilter_1.data.push(_this.collapseAttributes(e));
                                 break;
                         }
                     });
@@ -45,7 +45,7 @@ var ManifestParser = /** @class */ (function () {
                     break;
                 }
                 case 'meta-data':
-                    target.metaData.push(_this.collapseAttributes(element));
+                    target.metaData.push(_this.collapseAttributes(el));
                     break;
             }
         });
@@ -60,11 +60,12 @@ var ManifestParser = /** @class */ (function () {
         app.receivers = [];
         app.providers = [];
         app.usesLibraries = [];
-        element.childNodes.forEach(function (element) {
-            switch (element.nodeName) {
+        app.metaData = [];
+        element.childNodes.forEach(function (el) {
+            switch (el.nodeName) {
                 case 'activity': {
-                    var activity = _this.collapseAttributes(element);
-                    _this.parseIntents(element, activity);
+                    var activity = _this.collapseAttributes(el);
+                    _this.parseIntents(el, activity);
                     app.activities.push(activity);
                     if (_this.isLauncherActivity(activity)) {
                         app.launcherActivities.push(activity);
@@ -72,8 +73,8 @@ var ManifestParser = /** @class */ (function () {
                     break;
                 }
                 case 'activity-alias': {
-                    var activityAlias = _this.collapseAttributes(element);
-                    _this.parseIntents(element, activityAlias);
+                    var activityAlias = _this.collapseAttributes(el);
+                    _this.parseIntents(el, activityAlias);
                     app.activityAliases.push(activityAlias);
                     if (_this.isLauncherActivity(activityAlias)) {
                         app.launcherActivities.push(activityAlias);
@@ -81,32 +82,32 @@ var ManifestParser = /** @class */ (function () {
                     break;
                 }
                 case 'service': {
-                    var service = _this.collapseAttributes(element);
-                    _this.parseIntents(element, service);
+                    var service = _this.collapseAttributes(el);
+                    _this.parseIntents(el, service);
                     app.services.push(service);
                     break;
                 }
                 case 'receiver': {
-                    var receiver = _this.collapseAttributes(element);
-                    _this.parseIntents(element, receiver);
+                    var receiver = _this.collapseAttributes(el);
+                    _this.parseIntents(el, receiver);
                     app.receivers.push(receiver);
                     break;
                 }
                 case 'provider': {
-                    var provider_1 = _this.collapseAttributes(element);
+                    var provider_1 = _this.collapseAttributes(el);
                     provider_1.grantUriPermissions = [];
                     provider_1.metaData = [];
                     provider_1.pathPermissions = [];
-                    element.childNodes.forEach(function (element) {
-                        switch (element.nodeName) {
+                    el.childNodes.forEach(function (e) {
+                        switch (e.nodeName) {
                             case 'grant-uri-permission':
-                                provider_1.grantUriPermissions.push(_this.collapseAttributes(element));
+                                provider_1.grantUriPermissions.push(_this.collapseAttributes(e));
                                 break;
                             case 'meta-data':
-                                provider_1.metaData.push(_this.collapseAttributes(element));
+                                provider_1.metaData.push(_this.collapseAttributes(e));
                                 break;
                             case 'path-permission':
-                                provider_1.pathPermissions.push(_this.collapseAttributes(element));
+                                provider_1.pathPermissions.push(_this.collapseAttributes(e));
                                 break;
                         }
                     });
@@ -114,8 +115,10 @@ var ManifestParser = /** @class */ (function () {
                     break;
                 }
                 case 'uses-library':
-                    app.usesLibraries.push(_this.collapseAttributes(element));
+                    app.usesLibraries.push(_this.collapseAttributes(el));
                     break;
+                case 'meta-data':
+                    app.metaData.push(_this.collapseAttributes(el));
             }
         });
         return app;

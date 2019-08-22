@@ -70,6 +70,7 @@ export declare type applicationType = {
     receivers: servicesAndReceiversType[];
     providers: string[];
     usesLibraries: string[];
+    metaData: string[];
 };
 export declare type activityType = {
     theme: string;
